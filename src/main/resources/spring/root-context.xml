@@ -11,7 +11,7 @@
     <!-- Root Context: defines shared resources visible to all other web components -->
 
     <!-- 返回json -->
-    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven/>-->
     <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -28,16 +28,6 @@
             </list>
         </property>
     </bean>
-
-    <!-- 基于Cookie的本地化解析器 -->
-    <!-- 如果需要其他地方用的spring的国际化，可以使用这个配置
-    <bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="cookieMaxAge" value="604800" />
-        <property name="defaultLocale" value="zh_CN" />
-        <property name="cookieName" value="lang"></property>
-    </bean>
-     -->
 
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="staticMethod" value="com.wez.common.utils.CheckUtil.setResources" />

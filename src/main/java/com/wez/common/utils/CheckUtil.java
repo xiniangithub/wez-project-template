@@ -3,9 +3,13 @@ package com.wez.common.utils;
 import com.wez.common.exception.CheckException;
 import org.springframework.context.MessageSource;
 
+import java.util.Locale;
+
 public class CheckUtil {
 
     private static MessageSource resources;
+
+    private static Locale locale = Locale.ENGLISH;
 
     public static void setResources(MessageSource resources) {
         CheckUtil.resources = resources;
@@ -30,7 +34,7 @@ public class CheckUtil {
     }
 
     private static void fail(String msgKey, Object... args) throws CheckException {
-        throw new CheckException();
+        throw new CheckException(resources.getMessage(msgKey, args, locale));
     }
 
 }
