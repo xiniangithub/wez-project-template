@@ -37,7 +37,7 @@ public class ControllerAOP {
     }
 
     private Result<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
-        Result<?> result = new Result();
+        Result<?> result = new Result<>();
 
         // 已知异常【注意：已知异常不要打印堆栈，否则会干扰日志】
         // 校验出错，参数非法
