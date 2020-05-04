@@ -8,6 +8,7 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="com.wez.swagger.config"></context:component-scan>
     <context:component-scan base-package="com.wez.config" />
     <context:component-scan base-package="com.wez.utils" />
     <context:component-scan base-package="com.wez.svc" />
