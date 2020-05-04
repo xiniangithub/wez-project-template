@@ -1,10 +1,13 @@
 package com.wez.common.exception;
 
 /**
+ * 校验异常
  * @Author wez
  * @Date 2020/3/31
  */
 public class CheckException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
 
     public CheckException() {
     }
@@ -19,9 +22,5 @@ public class CheckException extends RuntimeException {
 
     public CheckException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    public CheckException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
     }
 }

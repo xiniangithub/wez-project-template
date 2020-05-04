@@ -15,16 +15,16 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface  Log {
 
-    // 操作类型
+    /** 操作类型 */
     String action();
 
-    // 对象类型
+    /** 对象类型 */
     String itemType() default "";
 
-    // 对象id
+    /** 对象id */
     String itemId() default "";
 
-    // （其他）参数
+    /** （其他）参数 */
     String param() default "";
 
 }

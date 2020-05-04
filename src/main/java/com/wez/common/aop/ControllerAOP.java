@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * 接口异常处理AOP
  * @Author wez
  * @Date 2020/3/31
  */
@@ -16,7 +16,7 @@ public class ControllerAOP {
     private static final Logger logger = LoggerFactory.getLogger(ControllerAOP.class);
 
     public Object handlerControllerMethod(ProceedingJoinPoint pjp) {
-        long startTime = System.currentTimeMillis();
+        
 
         Result<?> result;
 
@@ -25,10 +25,6 @@ public class ControllerAOP {
 
             // 如果需要打印入参，可以从这里取出打印
             // Object[] args = pjp.getArgs();
-
-            // 本次操作用时（毫秒）
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            logger.info("[{}]use time: {}", pjp.getSignature(), elapsedTime);
         } catch (Throwable e) {
             result = handlerException(pjp, e);
         }

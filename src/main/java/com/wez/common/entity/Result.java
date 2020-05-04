@@ -8,7 +8,6 @@ public class Result<T> {
     private String ret;
     private String msg;
     private T dataStore;
-    private Throwable throwable;
 
     public Result() {
     }
@@ -16,9 +15,17 @@ public class Result<T> {
     public Result(T dataStore) {
         this(OK, null, dataStore);
     }
-
-    public Result(String ret, String message) {
-        this(ret, message, null);
+    
+    public Result(String ret) {
+        this(ret, null, null);
+    }
+    
+    public Result(String ret, String msg) {
+        this(ret, msg, null);
+    }
+    
+    public Result(String ret, T dateStore) {
+        this(ret, null, dateStore);
     }
 
     public Result(String ret, String msg, T dateStore) {
@@ -27,12 +34,16 @@ public class Result<T> {
         this.dataStore = dateStore;
     }
 
-    public static <T> Result ok(String message, T dataStore) {
-        return new Result(OK, message, dataStore);
+    public static <T> Result<T> ok() {
+        return new Result<T>(OK, null, null);
+    }
+    
+    public static <T> Result<T> ok(T dataStore) {
+        return new Result<T>(dataStore);
     }
 
-    public static Result error(String message) {
-        return new Result(ERROR, message);
+    public static <T> Result<T> error(String message) {
+        return new Result<T>(ERROR, message);
     }
 
     public String getRet() {

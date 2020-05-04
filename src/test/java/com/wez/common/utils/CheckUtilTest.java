@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @Date 2020/4/1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/root-context.xml"})
+@ContextConfiguration(locations = {"classpath:spring/spring-context.xml"})
 public class CheckUtilTest {
 
     @Autowired
@@ -22,7 +22,11 @@ public class CheckUtilTest {
     public void test() {
         CheckUtil.setResources(resources);
 
-        CheckUtil.notNull(null, "id.error", 1001);
+        try {
+            CheckUtil.notNull(null, "id.error", 1001);
+        } catch(Throwable t) {
+            t.printStackTrace();
+        }
     }
 
 }
