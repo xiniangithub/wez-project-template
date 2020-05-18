@@ -17,8 +17,10 @@
 
     <aop:config>
         <aop:aspect id="logAspect" ref="logAop">
-            <aop:pointcut id="logPointcut" expression="@annotation(com.wez.common.annotations.Log)" />
-            <aop:around method="handlerLogMethod" pointcut-ref="logPointcut" />
+            <aop:pointcut id="systemLogPointcut" expression="@annotation(com.wez.common.annotations.SystemLog)" />
+            <aop:pointcut id="auditLogPointcut" expression="@annotation(com.wez.common.annotations.AuditLog)" />
+            <aop:around method="handlerLogMethod" pointcut-ref="systemLogPointcut" />
+            <aop:around method="handlerLogMethod" pointcut-ref="auditLogPointcut" />
         </aop:aspect>
     </aop:config>
 

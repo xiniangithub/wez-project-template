@@ -1,16 +1,20 @@
 package com.wez.common.aop;
 
 import com.wez.common.exception.CheckException;
+import com.wez.common.annotations.SystemLog;
 import com.wez.common.entity.Result;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * 接口异常处理AOP
  * @Author wez
  * @Date 2020/3/31
  */
+//@Component("controllerAop")
 public class ControllerAOP {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerAOP.class);
@@ -50,5 +54,19 @@ public class ControllerAOP {
 
         return result;
     }
+    
+    /**
+     * 记录系统日志
+     * @param pjp
+     */
+    /*private void recordSystemLog(ProceedingJoinPoint pjp, Throwable e) {
+        // 得到方法上的注解
+        MethodSignature signature = (MethodSignature) pjp.getSignature();
+        
+        SystemLog systemLog = signature.getMethod().getAnnotation(SystemLog.class);
+        System.out.println(String.format("%s,  %s", systemLog.exceptionMessage(), e.getMessage()));
+        
+//        logger.error("", e);
+    }*/
 
 }

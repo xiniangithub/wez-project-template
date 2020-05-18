@@ -2,47 +2,20 @@ package com.wez.common.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
-import javax.annotation.PostConstruct;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import com.wez.common.exception.CheckException;
-import com.wez.config.CommonProperties;
 
 @Component
 public class CheckUtil {
 
-    private static final LoggerUtil logger = new LoggerUtil();
-    
-    /** 多语言：当前语言 */
-    private static Locale LOCALE;
-    private static MessageSource resources;
-    
     @Autowired
-    private CommonProperties commonProperties;
-    
-    @PostConstruct
-    private void init() {
-        String language = commonProperties.getLanguage();
-        logger.info(String.format("当前多语言配置: %s", language));
-        
-        switch (language) {
-            case "en_US":
-                LOCALE = Locale.US;
-                break;
-            default:
-                LOCALE = Locale.SIMPLIFIED_CHINESE;
-        }
-        
-        logger.info(String.format("初始化多语言: %s", LOCALE));
-    }
+    private static I18NUtil i18nUtil;
     
     public static void check(boolean condition, String msgKey, Object... args) {
         if (condition) {
@@ -102,11 +75,7 @@ public class CheckUtil {
     }
 
     private static void fail(String msgKey, Object... args) throws CheckException {
-        throw new CheckException(resources.getMessage(msgKey, args, LOCALE));
-    }
-    
-    public static void setResources(MessageSource resources) {
-        CheckUtil.resources = resources;
+        throw new CheckException(i18nUtil.getMessage(msgKey, args));
     }
     
 }

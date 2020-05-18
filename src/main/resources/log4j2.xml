@@ -82,6 +82,7 @@
 	
 	<Loggers>
 		<logger name="org.springframework" level="INFO"></logger>
+		<logger name="springfox" level="INFO"></logger>
 		
 		<root level="debug">
 			<appender-ref ref="console" />
